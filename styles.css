@@ -1,0 +1,34 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background-color: #000;
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    /* This is your foreground cutout image */
+    background-image: url("zanzibar-shores.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.background .water {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    /* This is your water image */
+    background-image: url("zanzibar-ripples.png");
+    background-size: cover;
+    background-position: center;
+    filter: url("#turbulence");
+    z-index: 10; /* Keeps water behind your shore cutout */
+}

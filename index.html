@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <title>Zanzibar Shores</title>
+</head>
+<body>
+
+  <div class="background">
+    <div class="water"></div>
+  </div>
+
+  <svg style="width: 0; height: 0; position: absolute;">
+    <filter id="turbulence">
+      <!-- Fixed 'feTurbulance' spelling typo & lowered scale/octaves for smooth motion -->
+      <feTurbulence id="sea-filter" numOctaves="2" seed="2" baseFrequency="0.02 0.05"></feTurbulence>
+      <feDisplacementMap scale="3" in="SourceGraphic"></feDisplacementMap>
+      
+      <!-- Fixed keyTimes syntax and targeted #sea-filter -->
+      <animate 
+        href="#sea-filter" 
+        attributeName="baseFrequency" 
+        dur="10s" 
+        keyTimes="0;0.5;1" 
+        values="0.02 0.05; 0.04 0.08; 0.02 0.05" 
+        repeatCount="indefinite">
+      </animate>
+    </filter>
+  </svg>
+
+</body>
+</html>
