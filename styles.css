@@ -8,9 +8,21 @@ body {
     height: 100vh;
     width: 100vw;
     overflow: hidden;
-    background-color: #000;
-    
-    /* Perfect CSS Flexbox Centering */
+
+    /* Island Coastline Gradient Breakdown */
+    background: linear-gradient(
+        to bottom,
+        #5DA9E9 0%,
+        #5DA9E9 6%,   /* Holds Sky Blue until 26% */
+        #00A896 34%,   /* Blends fast into Sea Green by 34% */
+        #00A896 61%,   /* Holds Sea Green until 61% */
+        #E0F7FA 65%,   /* Blends fast into Bubble Foam by 65% */
+        #E0F7FA 68%,   /* Quick Foam Layer */
+        #E6C594 74%,   /* Blends fast into Sand by 74% */
+        #E6C594 100%   /* Holds Sand through bottom */
+    );
+
+    /* Center picture frame container */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,18 +30,14 @@ body {
 
 .background {
     position: relative;
-    
-    /* Maintain clean aspect ratio across screen widths */
     width: 66vw;
     height: 66vh;
-    
-    /* Foreground picture frame cutout */
     background-image: url("zanzibar-shores.png");
     background-size: cover;
     background-position: center;
 
-    /* Crop edges: top(0%), right(2%), bottom(0%), left(13%) */
-    clip-path: inset(0% 2% 0% 13%);
+    /* Left 13% and Right 2% Crop */
+    clip-path: inset(0% 2% 0% 13% round 20px);
 }
 
 .background .water {
@@ -38,12 +46,9 @@ body {
     left: 0;
     height: 100%;
     width: 100%;
-    
-    /* Waving water layer */
     background-image: url("zanzibar-ripples.png");
     background-size: cover;
     background-position: center;
     filter: url("#turbulence");
-    
     z-index: 10;
 }
