@@ -13,13 +13,13 @@ body {
     background: linear-gradient(
         to bottom,
         #5DA9E9 0%,
-        #5DA9E9 6%,   /* Holds Sky Blue until 26% */
-        #00A896 34%,   /* Blends fast into Sea Green by 34% */
-        #00A896 61%,   /* Holds Sea Green until 61% */
-        #E0F7FA 65%,   /* Blends fast into Bubble Foam by 65% */
-        #E0F7FA 68%,   /* Quick Foam Layer */
-        #E6C594 74%,   /* Blends fast into Sand by 74% */
-        #E6C594 100%   /* Holds Sand through bottom */
+        #5DA9E9 6%,
+        #00A896 34%,
+        #00A896 61%,
+        #E0F7FA 65%,
+        #E0F7FA 68%,
+        #E6C594 74%,
+        #E6C594 100%
     );
 
     /* Center picture frame container */
@@ -38,6 +38,14 @@ body {
 
     /* Left 13% and Right 2% Crop */
     clip-path: inset(0% 2% 0% 13% round 20px);
+
+    /* 
+       MATH FIX FOR LATERAL DRIFT:
+       (13% left crop - 2% right crop) / 2 = 5.5% rightward shift.
+       We shift the container right by 5.5% of its width (3.63vw)
+       so the VISIBLE portion of the image centers perfectly with the viewport!
+    */
+    transform: translateX(-2.1vw);
 }
 
 .background .water {
@@ -51,4 +59,26 @@ body {
     background-position: center;
     filter: url("#turbulence");
     z-index: 10;
+}
+
+.title-header {
+    position: absolute;
+    
+    /* 
+       MATH FIX FOR VERTICAL CENTERING:
+       The 66vh image takes up 17vh on top & 17vh on bottom.
+       Setting top: 8.5vh puts the header dead center in that 17vh top space!
+    */
+    top: 8.5vh;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: #1A365D;
+    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.4);
+    z-index: 30;
 }
